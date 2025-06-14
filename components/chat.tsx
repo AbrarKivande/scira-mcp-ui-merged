@@ -142,7 +142,7 @@ export default function Chat() {
 
 return (
   <div className="h-dvh flex flex-col justify-center w-full max-w-[430px] sm:max-w-3xl mx-auto px-4 sm:px-6 py-3">
-    {messages.length === 0 && !isLoadingChat ? (
+    {messages.length === 0 ? (
       <div className="max-w-xl mx-auto w-full">
         <ProjectOverview />
         <form
