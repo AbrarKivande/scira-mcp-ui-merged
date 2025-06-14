@@ -10,7 +10,8 @@ import { toast } from "sonner";
 import { useRouter, useParams } from "next/navigation";
 import { getUserId } from "@/lib/user-id";
 import { useLocalStorage } from "@/lib/hooks/use-local-storage";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { convertToUIMessages } from "@/lib/chat-store";
 import { type Message as DBMessage } from "@/lib/db/schema";
 import { nanoid } from "nanoid";
 import { useMCP } from "@/lib/context/mcp-context";
@@ -139,47 +140,47 @@ export default function Chat() {
 
   const isLoading = status === "streaming" || status === "submitted";
 
-  return (
-    <div className="h-dvh flex flex-col justify-center w-full max-w-3xl mx-auto px-4 sm:px-6 md:py-4">
-      {messages.length === 0 ? (
-        <div className="max-w-xl mx-auto w-full">
-          <ProjectOverview />
-          <form
-            onSubmit={handleFormSubmit}
-            className="mt-4 w-full mx-auto"
-          >
-            <Textarea
-              selectedModel={selectedModel}
-              setSelectedModel={setSelectedModel}
-              handleInputChange={handleInputChange}
-              input={input}
-              isLoading={isLoading}
-              status={status}
-              stop={stop}
-            />
-          </form>
+return (
+  <div className="h-dvh flex flex-col justify-center w-full max-w-[430px] sm:max-w-3xl mx-auto px-4 sm:px-6 py-3">
+    {messages.length === 0 && !isLoadingChat ? (
+      <div className="max-w-xl mx-auto w-full">
+        <ProjectOverview />
+        <form
+          onSubmit={handleFormSubmit}
+          className="mt-4 w-full mx-auto"
+        >
+          <Textarea
+            selectedModel={selectedModel}
+            setSelectedModel={setSelectedModel}
+            handleInputChange={handleInputChange}
+            input={input}
+            isLoading={isLoading}
+            status={status}
+            stop={stop}
+          />
+        </form>
+      </div>
+    ) : (
+      <>
+        <div className="flex-1 overflow-y-auto min-h-0 pb-2">
+          <Messages messages={messages} isLoading={isLoading} status={status} append={append} />
         </div>
-      ) : (
-        <>
-          <div className="flex-1 overflow-y-auto min-h-0 pb-2">
-            <Messages messages={messages} isLoading={isLoading} status={status} append={append} />
-          </div>
-          <form
-            onSubmit={handleFormSubmit}
-            className="mt-2 w-full mx-auto mb-4 sm:mb-auto"
-          >
-            <Textarea
-              selectedModel={selectedModel}
-              setSelectedModel={setSelectedModel}
-              handleInputChange={handleInputChange}
-              input={input}
-              isLoading={isLoading}
-              status={status}
-              stop={stop}
-            />
-          </form>
-        </>
-      )}
-    </div>
-  );
+        <form
+          onSubmit={handleFormSubmit}
+          className="mt-2 w-full mx-auto"
+        >
+          <Textarea
+            selectedModel={selectedModel}
+            setSelectedModel={setSelectedModel}
+            handleInputChange={handleInputChange}
+            input={input}
+            isLoading={isLoading}
+            status={status}
+            stop={stop}
+          />
+        </form>
+      </>
+    )}
+  </div>
+);
 }
