@@ -1,77 +1,90 @@
-<a href="https://mcp.scira.ai">
-  <h1 align="center">MCP UI Playground Chat (Scira MCP Chat Fork)</h1>
-</a>
+# 🚀 AI Product Engineering Internship Assignment – DisruptiveNext
 
-<p align="center">
+## 👤 Applicant Details
 
-  This Scira Chat fork hosts a playground for [MCP-UI](https://github.com/idosal/mcp-ui)-enabled chats. The chat automatically renders tool call results from the `mcp-ui` server SDK as UI components and can react to actions performed on them. For more information, please refer to the [documentation](https://idosal.github.io/mcp-ui/).
+**Name:** Abrar Kivande  
+**Role:** AI Product Engineering Intern  
+**Assignment Level Completed:** ✅ Level 1, ✅ Level 2, ✅ Level 3
 
-  You can define any MCP server to see the results live. For your convenience, you can configure the [demo server](https://remote-mcp-server-authless.idosalomon.workers.dev/sse) as a quickstart (see more details in the [guide](https://github.com/idosal/mcp-ui?tab=readme-ov-file#-examples)).
-</p>
+---
 
-<p align="center">
-  <a href="#features"><strong>Features</strong></a> •
-  <a href="#mcp-server-configuration"><strong>MCP Configuration</strong></a> •
-  <a href="#license"><strong>License</strong></a>
-</p>
-<br/>
+## 🧠 Project Summary
 
-## Features
+This repository contains the completed assignment for the AI Product Engineering Internship at **DisruptiveNext**. The assignment involves analyzing, comparing, and merging two GitHub repositories related to a modern AI-powered chat interface and backend agent.
 
-- **Supports UI in tool responses using `mcp-ui`**!
-- Streaming text responses powered by the [AI SDK by Vercel](https://sdk.vercel.ai/docs), allowing multiple AI providers to be used interchangeably with just a few lines of code.
-- Full integration with [Model Context Protocol (MCP)](https://modelcontextprotocol.io) servers to expand available tools and capabilities.
-- Multiple MCP transport types (HTTP, SSE and stdio) for connecting to various tool providers.
-- Built-in tool integration for extending AI capabilities.
-- Reasoning model support.
-- [shadcn/ui](https://ui.shadcn.com/) components for a modern, responsive UI powered by [Tailwind CSS](https://tailwindcss.com).
-- Built with the latest [Next.js](https://nextjs.org) App Router.
+---
 
-## MCP Server Configuration
+## 🛠 Tech Stack
 
-This application supports connecting to Model Context Protocol (MCP) servers to access their tools. You can add and manage MCP servers through the settings icon in the chat interface.
+- **React.js** (with Next.js v15 and Turbopack)
+- **TypeScript**
+- **Tailwind CSS**
+- **Axios** for API communication
+- **Node.js** + **NPM**
+- **Server-Sent Events (SSE)** for real-time streaming
+- **GitHub Copilot** (Student Developer Pack)
 
-### Adding an MCP Server
+---
 
-1. Click the settings icon (⚙️) next to the model selector in the chat interface.
-2. Enter a name for your MCP server.
-3. Select the transport type:
-   - **HTTP or SSE (Server-Sent Events)**: For HTTP-based remote servers
-   - **stdio (Standard I/O)**: For local servers running on the same machine
+## 📂 Key Files in This Repository
 
-#### HTTP or SSE Configuration
+| File | Description |
+|------|-------------|
+| `L1_Summary.md` | Understanding of project architecture |
+| `L2_Changes.md` | Detailed comparison of original vs forked repo |
+| `L3_Merge_Summary.md` | Summary of merging backend and frontend |
+| `README.md` | Setup guide and overview |
 
-If you select HTTP / SSE transport:
-1. Enter the server URL (e.g., `https://mcp.example.com/mcp` or `https://mcp.example.com/token/sse`)
-2. Click "Add Server"
+---
 
-#### stdio Configuration
+## 🚦 How to Run the Project
 
-If you select stdio transport:
-1. Enter the command to execute (e.g., `npx`)
-2. Enter the command arguments (e.g., `-y @modelcontextprotocol/server-google-maps`)
-   - You can enter space-separated arguments or paste a JSON array
-3. Click "Add Server"
+### 🔧 Requirements
 
-4. Click "Use" to activate the server for the current chat session.
+- Node.js (v18+)
+- NPM
 
-### Available MCP Servers
+### ▶️ Steps
 
-### Available MCP Servers
+```bash
+git clone https://github.com/AbrarKivande/scira-mcp-ui-merged
+cd <repo-name>
+npm install
+npm run dev
+```
 
-You can use any MCP-compatible server with this application. Here are some examples:
+Visit: [http://localhost:3000](http://localhost:3000)
 
-- [Composio](https://composio.dev/mcp) - Provides search, code interpreter, and other tools
-- [Zapier MCP](https://zapier.com/mcp) - Provides access to Zapier tools
-- [Hugging Face MCP](https://huggingface.co/mcp) - Provides tool access to Hugging Face Hub
-- Any MCP server using stdio transport with npx and python3
+> 💡 Note: You may encounter errors due to missing `GROQ_API_KEY` or database credentials. These are expected if no `.env.local` is configured. See notes below.
 
-You can also use the [demo server](https://remote-mcp-server-authless.idosalomon.workers.dev/sse), which exposes 4 tools:
-- `get_tasks_status` - Get a textual representation of the status of all tasks. Used to highlight the difference from UI tool results.
-- `show_task_status` - Displays a UI for the user to see the status of tasks (as opposed to text).
-- `show_user_status` - Displays a UI for the user to see the status of a user and their tasks (triggered by clicking on the user avatar in the `show_task` UI).
-- `nudge_team_member` - Nudges team member (triggered by clicking `Nudge` on the `user_status` UI).
+---
 
-## License
+## ⚠️ Known Limitations
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+- Backend-related routes (`/api/chat`, `/api/chats`) expect valid DB/API configuration via `.env.local`
+- These have been wrapped in try/catch for local development to prevent app crash
+
+Example `.env.local` (excluded from repo):
+```env
+GROQ_API_KEY=your-groq-api-key
+DATABASE_URL=postgresql://user:password@localhost:5432/dbname
+```
+
+---
+
+## 📷 (Optional) Screenshots
+
+You may add UI screenshots inside a `screenshots/` folder and showcase interface behavior.
+
+---
+
+## 🙏 Acknowledgements
+
+Thanks to the DisruptiveNext team for this exciting opportunity to learn and build in the generative AI space.
+
+---
+
+## 📬 Submission Info
+
+- **Submitted to:** ask@disruptivenext.com  
+- **Completed Levels:** Level 1 (Architecture), Level 2 (Code Analysis), Level 3 (Merge)
