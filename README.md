@@ -1,90 +1,128 @@
-# 🚀 AI Product Engineering Internship Assignment – DisruptiveNext
+# 🧠 Scira Chat UI + Agent Backend (Merged)
 
-## 👤 Applicant Details
-
-**Name:** Abrar Kivande  
-**Role:** AI Product Engineering Intern  
-**Assignment Level Completed:** ✅ Level 1, ✅ Level 2, ✅ Level 3
+A powerful AI-powered chat interface built with **Next.js**, **PostgreSQL**, and **Groq LLM API**, combining the capabilities of both `scira-mcp-ui-chat` and `scira-mcp-agent` repositories.
 
 ---
 
-## 🧠 Project Summary
+## 🚀 Features
 
-This repository contains the completed assignment for the AI Product Engineering Internship at **DisruptiveNext**. The assignment involves analyzing, comparing, and merging two GitHub repositories related to a modern AI-powered chat interface and backend agent.
-
----
-
-## 🛠 Tech Stack
-
-- **React.js** (with Next.js v15 and Turbopack)
-- **TypeScript**
-- **Tailwind CSS**
-- **Axios** for API communication
-- **Node.js** + **NPM**
-- **Server-Sent Events (SSE)** for real-time streaming
-- **GitHub Copilot** (Student Developer Pack)
+- ✨ Chat interface with clean, modern UI (Next.js + TailwindCSS)
+- 🧠 AI assistant responses using Groq API (Mixtral or LLaMA)
+- 💬 Chat history saved to PostgreSQL via Drizzle ORM
+- 🧾 Full CRUD API endpoints for chats and messages
+- 🛠️ Modular architecture for frontend and backend separation
 
 ---
 
-## 📂 Key Files in This Repository
+## 📂 Project Structure
 
-| File | Description |
-|------|-------------|
-| `L1_Summary.md` | Understanding of project architecture |
-| `L2_Changes.md` | Detailed comparison of original vs forked repo |
-| `L3_Merge_Summary.md` | Summary of merging backend and frontend |
-| `README.md` | Setup guide and overview |
+```
+├── app/
+│   ├── api/
+│   │   ├── chat/route.ts       # POST AI messages
+│   │   └── chats/route.ts      # GET all chats
+├── lib/
+│   ├── chat-store.ts           # Core chat DB logic
+│   ├── db/index.ts             # Drizzle DB instance
+│   └── schema.ts               # DB schema for chats/messages
+├── .env.local                  # Env variables
+└── README.md                   # This file
+```
 
 ---
 
-## 🚦 How to Run the Project
+## ⚙️ Setup Instructions
 
-### 🔧 Requirements
-
-- Node.js (v18+)
-- NPM
-
-### ▶️ Steps
+### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/AbrarKivande/scira-mcp-ui-merged
-cd <repo-name>
+git clone https://github.com/AbrarKivande/scira-mcp-ui-merged.git
+cd scira-mcp-ui-merged
+```
+
+### 2. Install Dependencies
+
+```bash
 npm install
+```
+
+### 3. Configure Environment Variables
+
+Create `.env.local` file in the root:
+
+```env
+DATABASE_URL=postgresql://postgres:your_password@localhost:5432/chatdb
+GROQ_API_KEY=your_groq_api_key
+```
+
+### 4. Start PostgreSQL
+
+Make sure PostgreSQL is running and database `chatdb` exists.
+
+You can create the DB using:
+
+```bash
+createdb chatdb
+```
+
+### 5. Run the Dev Server
+
+```bash
 npm run dev
 ```
 
 Visit: [http://localhost:3000](http://localhost:3000)
 
-> 💡 Note: You may encounter errors due to missing `GROQ_API_KEY` or database credentials. These are expected if no `.env.local` is configured. See notes below.
+---
+
+## 📦 Tech Stack
+
+| Tech           | Description                         |
+|----------------|-------------------------------------|
+| Next.js 15     | Frontend framework (Turbopack)      |
+| Tailwind CSS   | Styling                             |
+| PostgreSQL     | Relational database                 |
+| Drizzle ORM    | Type-safe DB access                 |
+| Groq API       | AI assistant responses              |
+| React Query    | Data fetching and caching           |
 
 ---
 
-## ⚠️ Known Limitations
+## 🧪 Sample API Request
 
-- Backend-related routes (`/api/chat`, `/api/chats`) expect valid DB/API configuration via `.env.local`
-- These have been wrapped in try/catch for local development to prevent app crash
+```ts
+POST /api/chat
 
-Example `.env.local` (excluded from repo):
-```env
-GROQ_API_KEY=your-groq-api-key
-DATABASE_URL=postgresql://user:password@localhost:5432/dbname
+{
+  "messages": [
+    { "role": "user", "content": "Hi, who are you?" }
+  ]
+}
 ```
 
 ---
 
-## 📷 (Optional) Screenshots
+## 📸 Screenshots
 
-You may add UI screenshots inside a `screenshots/` folder and showcase interface behavior.
-
----
-
-## 🙏 Acknowledgements
-
-Thanks to the DisruptiveNext team for this exciting opportunity to learn and build in the generative AI space.
+> Add your screenshots here:
+- Home page
+- Chat screen
+- Terminal success logs
+- DB proof (optional)
 
 ---
 
-## 📬 Submission Info
+## 👤 Author
 
-- **Submitted to:** ask@disruptivenext.com  
-- **Completed Levels:** Level 1 (Architecture), Level 2 (Code Analysis), Level 3 (Merge)
+**Abrar Kivande**  
+🔗 [GitHub Repo](https://github.com/AbrarKivande/scira-mcp-ui-merged)
+
+---
+
+## ✅ License
+
+MIT License — free to use and modify.
+
+---
+
+> Built with ❤️ for DisruptiveNext Internship
